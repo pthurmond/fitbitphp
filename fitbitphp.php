@@ -1962,6 +1962,31 @@ class FitBitPHP
         }
     }
 
+    /**
+     * Get user's bages
+     *
+     * @throws FitBitException
+     * @return mixed SimpleXMLElement or the value encoded in json as an object
+     */
+    public function getBadges() {
+        $headers = $this->getHeaders();
+        try {
+            $this->oauth->fetch($this->baseApiUrl . "user/" . $this->userId . "/badges." . $this->responseFormat, NULL, OAUTH_HTTP_METHOD_GET, $headers);
+        } catch (Exception $E) {
+        }
+        $response = $this->oauth->getLastResponse();
+        $responseInfo = $this->oauth->getLastResponseInfo();
+        if (!strcmp($responseInfo['http_code'], '200')) {
+            $response = $this->parseResponse($response);
+
+            if ($response)
+                return $response;
+            else
+                throw new FitBitException($responseInfo['http_code'], 'Fitbit request failed. Code: ' . $responseInfo['http_code']);
+        } else {
+            throw new FitBitException($responseInfo['http_code'], 'Fitbit request failed. Code: ' . $responseInfo['http_code']);
+        }
+    }
 
     /**
      * Get list of devices and their properties
