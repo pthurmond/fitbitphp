@@ -105,21 +105,10 @@ class FitBitPHP
 
     private function initUrls($https = true, $httpsApi = true)
     {
-
-        if ($httpsApi)
-            $this->baseApiUrl = 'https://' . $this->apiHost . '/1/';
-        else
-            $this->baseApiUrl = 'http://' . $this->apiHost . '/1/';
-
-        if ($https) {
-            $this->authUrl = 'https://' . $this->authHost . '/oauth/authorize';
-            $this->requestTokenUrl = 'https://' . $this->apiHost . '/oauth/request_token';
-            $this->accessTokenUrl = 'https://' . $this->apiHost . '/oauth/access_token';
-        } else {
-            $this->authUrl = 'http://' . $this->authHost . '/oauth/authorize';
-            $this->requestTokenUrl = 'http://' . $this->apiHost . '/oauth/request_token';
-            $this->accessTokenUrl = 'http://' . $this->apiHost . '/oauth/access_token';
-        }
+        $this->baseApiUrl = 'https://' . $this->apiHost . '/1/';
+        $this->authUrl = 'https://' . $this->authHost . '/oauth/authorize';
+        $this->requestTokenUrl = 'https://' . $this->apiHost . '/oauth/request_token';
+        $this->accessTokenUrl = 'https://' . $this->apiHost . '/oauth/access_token';
     }
 
     /**
