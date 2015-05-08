@@ -267,6 +267,10 @@ class FitBitPHP
         $this->userId = $userId;
     }
 
+    public function getUser() {
+        return $this->userId;
+    }
+
 
     /**
      * Set Unit System for all future calls (see http://wiki.fitbit.com/display/API/API-Unit-System)
